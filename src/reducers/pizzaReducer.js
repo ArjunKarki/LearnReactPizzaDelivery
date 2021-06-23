@@ -7,17 +7,18 @@ import {
 const pizzaState = {
   pizzas: [],
   error: null,
+  isLoading: false,
 };
 export const pizzaReducer = (state = pizzaState, action) => {
   switch (action.type) {
     case GET_PIZZA_REQUEST: {
-      return { ...state };
+      return { ...state, isLoading: true };
     }
     case GET_PIZZA_SUCCESS: {
-      return { ...state };
+      return { ...state, pizzas: action.payload, isLoading: false };
     }
     case GET_PIZZA_FAILED: {
-      return { ...state };
+      return { ...state, error: action.payload, isLoading: false };
     }
     default:
       return state;

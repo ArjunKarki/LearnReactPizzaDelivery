@@ -5,15 +5,15 @@ import {
   GET_PIZZA_SUCCESS,
 } from "../types/pizzasTypes";
 
-export const getPizza = () => (dispatch) => {
+export const getPizza = () => async (dispatch) => {
   dispatch({ type: GET_PIZZA_REQUEST });
 
   try {
-    const res = axios.get("/api/getPizzas");
+    const res = await axios.get("/api/pizza/getPizzas");
     console.log(res);
-    dispatch({ type: GET_PIZZA_SUCCESS });
+    dispatch({ type: GET_PIZZA_SUCCESS, payload: res.data });
   } catch (error) {
-    console.log("error==>", e);
-    dispatch({ type: GET_PIZZA_FAILED });
+    console.log("error==>", error);
+    dispatch({ type: GET_PIZZA_FAILED, payload: error });
   }
 };

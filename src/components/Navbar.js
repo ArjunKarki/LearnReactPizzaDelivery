@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 function Navbar() {
+  const { cartItems } = useSelector((state) => state.carts);
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded">
       <a class="navbar-brand" href="#">
@@ -25,7 +27,7 @@ function Navbar() {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              Carts
+              Carts {cartItems.length}
             </a>
           </li>
         </ul>
