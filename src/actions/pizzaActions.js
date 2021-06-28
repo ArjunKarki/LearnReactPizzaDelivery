@@ -13,7 +13,7 @@ export const getPizza = () => async (dispatch) => {
     console.log(res);
     dispatch({ type: GET_PIZZA_SUCCESS, payload: res.data });
   } catch (error) {
-    console.log("error==>", error);
+    console.log("error==>", error.message);
     dispatch({ type: GET_PIZZA_FAILED, payload: error });
   }
 };

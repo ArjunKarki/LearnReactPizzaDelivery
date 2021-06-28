@@ -42,7 +42,11 @@ function CartScreen() {
               <hr />
             </div>
             <div className="w-100">
-              <img src={cart.image} style={{ width: "80px", height: "80px" }} />
+              <img
+                alt={cart.image}
+                src={cart.image}
+                style={{ width: "80px", height: "80px" }}
+              />
             </div>
             <div className="w-100 mt-5">
               <i

@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pizza from "../components/pizza";
 import { getPizza } from "../actions/pizzaActions";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 function HomeScreen() {
   const dispatch = useDispatch();
   const { pizzas, error, isLoading } = useSelector((state) => state.pizzas);
+  console.log("kk", error);
   useEffect(() => {
     dispatch(getPizza());
   }, []);
@@ -12,9 +15,9 @@ function HomeScreen() {
   return (
     <div className="row">
       {isLoading ? (
-        <h1>Loading......</h1>
+        <Loading />
       ) : error ? (
-        <h1>{error}</h1>
+        <Error error={error} />
       ) : (
         pizzas.map((pizza, i) => (
           <div key={i} className="col-md-4">

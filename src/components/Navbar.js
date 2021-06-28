@@ -1,8 +1,11 @@
 import React from "react";
+import { Dropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function Navbar() {
   const { cartItems } = useSelector((state) => state.carts);
+  const { user } = useSelector((state) => state.auth);
+  console.log("nav", user);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-3 bg-white rounded">
       <Link className="navbar-brand" to="/">
@@ -22,10 +25,35 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Login
-            </a>
+            <div className="dropdown">
+              <button
+                style={{ backgroundColor: "#fff" }}
+                className="dropdown-toggle mt-2 border-0 "
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {user?.name ? user.name : "login"}
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <Link className="dropdown-item" href="#">
+                    Orders
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to={"/login"}>
+                    Log out
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </li>
+
           <li className="nav-item">
             <Link className="nav-link" to="/cart">
               Carts {cartItems.length}

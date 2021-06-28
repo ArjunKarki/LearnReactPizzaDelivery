@@ -8,13 +8,13 @@ export const cartReducer = (state = intState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       let isExist = state.cartItems.find(
-        (cart) => cart._id == action.payload._id
+        (cart) => cart._id === action.payload._id
       );
 
       if (isExist) {
         return {
           cartItems: state.cartItems.map((cart) =>
-            cart._id == action.payload._id ? action.payload : cart
+            cart._id === action.payload._id ? action.payload : cart
           ),
         };
       } else {
@@ -23,7 +23,7 @@ export const cartReducer = (state = intState, action) => {
     case REMOVE_FROM_CART:
       return {
         cartItems: state.cartItems.filter(
-          (cart) => cart._id != action.payload._id
+          (cart) => cart._id !== action.payload._id
         ),
       };
 

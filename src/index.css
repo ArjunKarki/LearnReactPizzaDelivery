@@ -33,6 +33,7 @@ h1 {
 .btn {
   background-color: red !important;
   color: white !important;
+  box-shadow: none !important;
 }
 .fa-plus {
   color: green;
@@ -46,4 +47,9 @@ h1 {
 
 .fa-trash {
   color: red !important;
+}
+
+input {
+  margin-top: 15px !important;
+  box-shadow: none !important;
 }
